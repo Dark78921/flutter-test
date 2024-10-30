@@ -26,6 +26,9 @@ jobs:
       - name: Upgrade flutter
         run: flutter upgrade
 
+      - name: Install Firebase
+        run: npm install firebase
+
       - name: Install dependencies
         run: npm ci
 
