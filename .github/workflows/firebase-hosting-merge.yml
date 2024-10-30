@@ -36,6 +36,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase
-        run: npm run deploy
+        run: firebase deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Use the token stored in GitHub secrets
