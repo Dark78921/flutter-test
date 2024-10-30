@@ -9,7 +9,7 @@
       "deploy": "gh-pages -d build/web"
     },
     "dependencies": {
-      "gh-pages": "^3.2.3"
+      "gh-pages": "^5.0.0"
     },
     "keywords": [
       "flutter",
