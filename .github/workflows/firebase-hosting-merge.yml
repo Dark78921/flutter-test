@@ -19,11 +19,13 @@ jobs:
         with:
           flutter-version: '3.24.4'  # Update to the required Flutter version
           channel: 'stable'
+
       - name: Stable Flutter
-        uses: flutter channel stable
+        run: flutter channel stable
 
       - name: Upgrade flutter
-        uses: flutter upgrade
+        run: flutter upgrade
+
       - name: Install dependencies
         run: npm ci
 
