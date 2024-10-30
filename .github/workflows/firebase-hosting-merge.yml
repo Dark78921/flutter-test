@@ -14,11 +14,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Flutter
-        run: |
-          git clone https://github.com/flutter/flutter.git -b stable
-          echo "${{ github.workspace }}/flutter/bin" >> $GITHUB_PATH  # Add Flutter to PATH
-          flutter doctor  # Verify Flutter installation
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.10.7'  # Update to the required Flutter version
+          channel: 'stable'
 
       - name: Install dependencies
         run: npm ci
