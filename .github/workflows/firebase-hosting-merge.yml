@@ -15,10 +15,10 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.5.3'  # Update to the required Flutter version
-          channel: 'stable'
+        run: |
+          git clone https://github.com/flutter/flutter.git -b stable
+          echo "$GITHUB_WORKSPACE/flutter/bin" >> $GITHUB_PATH
+          flutter doctor
 
       - name: Install dependencies
         run: npm ci
