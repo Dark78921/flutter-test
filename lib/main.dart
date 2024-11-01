@@ -1,98 +1,88 @@
-import 'package:flutter/material.dart'; // Importing Flutter's material design library
-import 'package:flutter/services.dart'; // Importing services for system UI customization
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'models/dock_item.dart'; // Importing the DockItem model
-import 'widgets/dock.dart'; // Importing the Dock widget
+import 'models/dock_item.dart';
+import 'widgets/dock.dart';
 
 void main() {
-  // Ensures that the Flutter engine is initialized before running the app
   WidgetsFlutterBinding.ensureInitialized();
-  
-  // Sets the system UI overlay style for the app
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent, // Makes the status bar transparent
-      statusBarIconBrightness: Brightness.light, // Sets the status bar icons to light
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
     ),
   );
-  
-  // Runs the MyApp widget
   runApp(const MyApp());
 }
 
-// The main application widget
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Builds the MaterialApp widget
     return MaterialApp(
-      title: 'Flutter Mac Dock', // Title of the application
-      debugShowCheckedModeBanner: false, // Hides the debug banner
+      title: 'Flutter Mac Dock',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Sets the primary color theme
-        visualDensity: VisualDensity.adaptivePlatformDensity, // Adjusts the visual density
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomeScreen(), // Sets the home screen of the app
+      home: const HomeScreen(),
     );
   }
 }
 
-// The home screen widget of the application
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Builds the Scaffold widget for the home screen
     return Scaffold(
-      extendBodyBehindAppBar: true, // Extends the body behind the app bar
-      extendBody: true, // Extends the body to fill the screen
+      extendBodyBehindAppBar: true,
+      extendBody: true,
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/wallpaper.jpg'), // Background image
-            fit: BoxFit.cover, // Covers the entire container
+            image: AssetImage('assets/wallpaper.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: SafeArea(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end, // Aligns children to the bottom
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Center(
                 child: Dock(
                   items: [
-                    // List of dock items with icons and actions
                     DockItem(
-                      icon: Icons.person, // Icon for the Profile item
-                      color: Colors.blue, // Color for the Profile item
-                      onTap: () => _handleItemTap(context, 'Profile'), // Action on tap
+                      icon: Icons.person,
+                      color: Colors.blue,
+                      onTap: () => _handleItemTap(context, 'Profile'),
                     ),
                     DockItem(
-                      icon: Icons.message, // Icon for the Messages item
-                      color: Colors.green, // Color for the Messages item
-                      onTap: () => _handleItemTap(context, 'Messages'), // Action on tap
+                      icon: Icons.message,
+                      color: Colors.green,
+                      onTap: () => _handleItemTap(context, 'Messages'),
                     ),
                     DockItem(
-                      icon: Icons.call, // Icon for the Calls item
-                      color: Colors.orange, // Color for the Calls item
-                      onTap: () => _handleItemTap(context, 'Calls'), // Action on tap
+                      icon: Icons.call,
+                      color: Colors.orange,
+                      onTap: () => _handleItemTap(context, 'Calls'),
                     ),
                     DockItem(
-                      icon: Icons.camera, // Icon for the Camera item
-                      color: Colors.purple, // Color for the Camera item
-                      onTap: () => _handleItemTap(context, 'Camera'), // Action on tap
+                      icon: Icons.camera,
+                      color: Colors.purple,
+                      onTap: () => _handleItemTap(context, 'Camera'),
                     ),
                     DockItem(
-                      icon: Icons.photo, // Icon for the Photos item
-                      color: Colors.red, // Color for the Photos item
-                      onTap: () => _handleItemTap(context, 'Photos'), // Action on tap
+                      icon: Icons.photo,
+                      color: Colors.red,
+                      onTap: () => _handleItemTap(context, 'Photos'),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 24), // Adds space below the dock
+              const SizedBox(height: 24),
             ],
           ),
         ),
@@ -100,15 +90,13 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  // Handles the tap event for dock items
   void _handleItemTap(BuildContext context, String itemName) {
-    // Displays a SnackBar with the tapped item name
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Tapped on $itemName'), // Message displayed in the SnackBar
-        behavior: SnackBarBehavior.floating, // Makes the SnackBar float above the content
-        backgroundColor: Colors.black87, // Background color of the SnackBar
-        duration: const Duration(seconds: 1), // Duration for which the SnackBar is visible
+        content: Text('Tapped on $itemName'),
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.black87,
+        duration: const Duration(seconds: 1),
       ),
     );
   }
