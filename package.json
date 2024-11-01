@@ -1,0 +1,21 @@
+{
+    "name": "flutter_mac_dock",
+    "version": "1.0.0",
+    "description": "A Flutter web application",
+    "main": "index.js",
+    "scripts": {
+      "build": "flutter build web",
+      "serve": "flutter run -d chrome",
+      "deploy": "firebase deploy --only hosting"
+    },
+    "dependencies": {
+      "gh-pages": "^5.0.0"
+    },
+    "keywords": [
+      "flutter",
+      "web",
+      "application"
+    ],
+    "author": "dark",
+    "license": "MIT"
+  }
